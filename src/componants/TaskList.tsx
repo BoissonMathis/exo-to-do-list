@@ -7,11 +7,11 @@ export function TaskList() {
     const [taskList, setTaskList] = useState<Task[]>([])
     
     useEffect(() => {
-        tasks$.subscribe((updatedTask) => setTaskList([...updatedTask]))
+        const subscription = tasks$.subscribe((updatedTask) => setTaskList([...updatedTask]));
 
-        return () => 
-            tasks$.unsubscribe()
-        
+        return () => {
+            subscription.unsubscribe();
+        };
     }, [])
 
     return (
