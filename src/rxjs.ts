@@ -23,6 +23,8 @@ export const addTask = (text: string) => {
 }
 
 export const deleteTask = (id: string) => {
+    const taskIndex: number = tasks.findIndex((task) => task.id === id)
+    tasks.splice(taskIndex, 1)
     tasks$.next(tasks)
 }
 
@@ -30,6 +32,6 @@ export const toggleTask = (id: string) => {
     const task = tasks.find((task) => task.id === id) as Task
 
     task.status = !task?.status
-    
+
     tasks$.next(tasks)
 }

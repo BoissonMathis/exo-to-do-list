@@ -1,6 +1,6 @@
 import { Checkbox, List, ListItem, Text, Button } from '@mantine/core';
 import { useEffect, useState } from "react"
-import { Task, tasks$, toggleTask } from "../rxjs";
+import { Task, deleteTask, tasks$, toggleTask } from "../rxjs";
 import { MdDeleteForever } from "react-icons/md";
 
 export function TaskList() {
@@ -16,18 +16,18 @@ export function TaskList() {
                 {taskList.map((task) => {
 
                     return(
-                        <ListItem key={task.id}>
+                        <li key={task.id} className='flex gap-6 mb-6'>
+                            <Button variant="filled" color="gray" onClick={() => deleteTask(task.id)}>
+                                <MdDeleteForever />
+                            </Button>
+                            <Text className={task.status ? 'line-through' : undefined}>
+                                {task.text}
+                            </Text>
                             <Checkbox
                                 checked = {task.status ? true : false}
                                 onChange = {() => toggleTask(task.id)}
                             />
-                            <Text className={task.status ? 'line-through' : undefined}>
-                                {task.text}
-                            </Text>
-                            <Button variant="filled" color="gray">
-                                <MdDeleteForever />
-                            </Button>
-                        </ListItem>
+                        </li>
                     )
                 })}
             </List>

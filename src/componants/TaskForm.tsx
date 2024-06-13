@@ -1,14 +1,8 @@
 import { Button, Group, TextInput } from "@mantine/core";
 import { useForm } from '@mantine/form';
-import { useEffect, useState } from "react"
-import { Task, addTask, tasks$ } from "../rxjs";
+import { addTask } from "../rxjs";
 
 export function TaskForm() {
-    const [taskList, setTaskList] = useState<Task[]>([])
-    
-    useEffect(() => {
-        tasks$.subscribe((updatedTask) => setTaskList([...updatedTask]))
-    }, [])
 
     const form = useForm({
         mode: 'uncontrolled',
@@ -19,7 +13,7 @@ export function TaskForm() {
     });
 
     return (
-        <div className="w-fit">
+        <div className="flex flex-col content-center w-fit mb-16">
             <form onSubmit={form.onSubmit((value) => {addTask(value.text)})}>
                 <TextInput
                     label="Add task"
