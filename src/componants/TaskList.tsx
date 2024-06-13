@@ -8,6 +8,10 @@ export function TaskList() {
     
     useEffect(() => {
         tasks$.subscribe((updatedTask) => setTaskList([...updatedTask]))
+
+        return () => 
+            tasks$.unsubscribe()
+        
     }, [])
 
     return (
