@@ -13,7 +13,7 @@ export function TaskForm() {
     });
 
     return (
-        <div className="flex flex-col content-center w-fit mb-16">
+        <div className="w-fit mb-16">
             <form onSubmit={form.onSubmit((value) => {addTask(value.text)})}>
                 <TextInput
                     label="Add task"

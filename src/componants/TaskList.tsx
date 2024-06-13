@@ -16,7 +16,7 @@ export function TaskList() {
                 {taskList.map((task) => {
 
                     return(
-                        <li key={task.id} className='flex gap-6 mb-6'>
+                        <li key={task.id} className='flex items-center gap-6 mb-6'>
                             <Button variant="filled" color="gray" onClick={() => deleteTask(task.id)}>
                                 <MdDeleteForever />
                             </Button>

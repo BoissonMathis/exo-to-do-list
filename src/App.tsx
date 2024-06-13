@@ -4,7 +4,7 @@ import { TaskList } from "./componants/TaskList"
 export function App() {
 
   return (
-    <div className = "flex flex-col content-center mt-16">
+    <div className = "flex flex-col items-center mt-16 w-full">
       <TaskForm />
       <TaskList />
     </div>
